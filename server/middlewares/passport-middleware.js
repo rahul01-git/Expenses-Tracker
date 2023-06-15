@@ -20,7 +20,7 @@ passport.use(
             const row = await User.findOne({ where: { id} })
             if (!row) throw new Error('401 not authorized')
 
-            let user = { id: row.id, email: row.email, first_name: row.first_name, last_name: row.last_name }
+            let user = { id: row.id, email: row.email, first_name: row.first_name, last_name: row.last_name, role:row.role }
 
             return await done(null, user)
         } catch (error) {

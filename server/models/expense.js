@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Expense.belongsTo(models.User);
-      Expense.belongsTo(models.Category);
-      models.User.hasMany(Expense)
-      models.Category.hasMany(Expense)
+      Expense.belongsTo(models.User,{ foreignKey: 'user_id' });
+      Expense.belongsTo(models.Category,{ foreignKey: 'category_id' });
+      models.User.hasMany(Expense,{ foreignKey: 'user_id' })
+      models.Category.hasMany(Expense,{ foreignKey: 'category_id' })
     }
   }
   Expense.init({
@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     note: DataTypes.STRING,
     image: DataTypes.STRING,
     category_id: DataTypes.INTEGER,
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     soft_delete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
