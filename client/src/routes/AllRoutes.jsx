@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import { useSelector } from "react-redux";
+import PageNotFound from "../pages/PageNotFound";
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -30,6 +31,7 @@ const AllRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
+        <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </BrowserRouter>
   );
