@@ -5,15 +5,19 @@ import { fetchProtectedInfo, onLogout } from "../api/auth";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { unAuthenticateUser } from "../redux/slices/authSlice";
+import { populateData,unPopulateData } from "../redux/slices/userSlice";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
+
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [protectedData, setProtectedData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const logout = async () => {
     try {
       await onLogout();
+      dispatch(unPopulateData())
       dispatch(unAuthenticateUser());
       localStorage.removeItem("isAuth");
     } catch (error) {
@@ -24,7 +28,7 @@ const Home = () => {
   const protectedInfo = async () => {
     try {
       const { data } = await fetchProtectedInfo();
-      setProtectedData(data.info);
+      dispatch(populateData(data))
       setLoading(false);
     } catch (error) {
       logout();
@@ -43,7 +47,8 @@ const Home = () => {
     <div className="border-4 border-red-500 p-3 max-w-screen-lg mx-auto max-h-full">
       <Header logout={logout} />
       <Amount />
-      {/* <OptionsMenu /> */}
+      <OptionsMenu />
+      <Outlet/>
     </div>
   );
 };

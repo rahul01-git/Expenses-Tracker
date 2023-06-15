@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
+
 const Header = ({logout}) => {
+  const {user}  = useSelector((state) => state.user);
   return (
     <div className="bg-indigo-200 p-4 rounded-sm mb-5 flex justify-between items-center">
       <div>
-        <h3 className="text-2xl font-medium tracking-wide ">Hi, Rahul</h3>
+        <h3 className="text-2xl font-medium tracking-wide ">Hi, {user?.payload?.first_name}</h3>
         <p className="my-2">
           Welcome back to your{" "}
           <span className="font-bold text-indigo-500">expenses tracker</span>

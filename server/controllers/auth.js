@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User,tags } = require('../models')
 const { hash } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
 const { SECRET } = require('../constants')
@@ -14,6 +14,22 @@ exports.register = async (req, res) => {
             password: hashedPass,
         })
         return res.status(201).json({ success: true, message: 'The registration was successful' })
+    } catch (error) {
+        return res.status(500).json({
+            error: error.message
+        })
+    }
+}
+exports.tags = async (req, res) => {
+    const { user_id,tag_title,color } = req.body;
+    console.log(user_id,tag_title,color)
+    try {
+        await tags.create({
+            user_id,
+            tag_title,
+            color,
+        })
+        return res.status(201).json({ success: true, message: 'The tag added successful' })
     } catch (error) {
         return res.status(500).json({
             error: error.message
@@ -43,10 +59,9 @@ exports.login = async (req, res) => {
 }
 
 exports.protected = async (req, res) => {
+    const { id, email, first_name, last_name } = req.user;
     try {
-        return res.status(200).json({
-            info: 'protected info'
-        })
+        return res.status(200).json({ id, email, first_name, last_name })
     } catch (error) {
         console.log(error.message)
     }

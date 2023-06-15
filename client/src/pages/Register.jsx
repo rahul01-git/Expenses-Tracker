@@ -21,6 +21,9 @@ const Register = () => {
       const { data } = await onRegistration(values);
       setError("");
       setSuccess(data.message);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
       setValues({
         first_name: "",
         last_name: "",

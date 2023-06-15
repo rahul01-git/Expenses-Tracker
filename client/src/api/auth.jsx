@@ -23,3 +23,4 @@ export async function fetchProtectedInfo() {
         'http://localhost:8000/api/protected',
     )
 }
+
