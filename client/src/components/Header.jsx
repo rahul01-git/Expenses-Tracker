@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({logout}) => {
   return (
     <div className="bg-indigo-200 p-4 rounded-sm mb-5 flex justify-between items-center">
       <div>
@@ -9,9 +9,9 @@ const Header = () => {
         </p>
       </div>
       <div>
-        <a className=" bg-indigo-500 text-white px-4 py-2 rounded-sm hover:bg-indigo-600 cursor-pointer">
+        <button onClick={()=>logout()} className=" bg-indigo-500 text-white px-4 py-2 rounded-sm hover:bg-indigo-600 cursor-pointer">
           Logout
-        </a>
+        </button>
       </div>
     </div>
   );

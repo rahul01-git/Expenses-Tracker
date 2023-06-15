@@ -1,11 +1,8 @@
-import Home from "./components/Home";
-import { BrowserRouter as Router } from "react-router-dom";
+import AllRoutes from "./routes/AllRoutes";
 
 const App = () => {
   return (
-    <Router>
-      <Home />
-    </Router>
+    <AllRoutes/>
   );
 };
 
