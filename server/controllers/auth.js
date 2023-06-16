@@ -252,7 +252,7 @@ exports.deleteExpenses = async (req, res) => {
 
 exports.fetchUsers = async (req, res) => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({ where: { role:"user" } });;
         return res.status(200).json({ success: true, users })
     } catch (error) {
         return res.status(500).json({

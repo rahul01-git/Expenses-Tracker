@@ -31,25 +31,25 @@ const Tags = () => {
         color: "#000000",
       });
 
-      const response  = await onTagsFetch(user?.payload?.id)
+      const response = await onTagsFetch(user?.payload?.id);
       setTags(response.data.tags);
     } catch (error) {
       console.log(error);
     }
   };
-  const handleDelete = async (id) =>{
+  const handleDelete = async (id) => {
     try {
-      await onTagsArchive(id)
-      const response  = await onTagsFetch(user?.payload?.id)
+      await onTagsArchive(id);
+      const response = await onTagsFetch(user?.payload?.id);
       setTags(response.data.tags);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const response  = await onTagsFetch(user?.payload?.id)
+      const response = await onTagsFetch(user?.payload?.id);
       setTags(response.data.tags);
     };
 
@@ -131,7 +131,7 @@ const Tags = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {!tags ? (
+                  {tags.length === 0 ? (
                     <tr>
                       <td colSpan="4" className="text-center py-4">
                         No tags available.
@@ -155,7 +155,14 @@ const Tags = () => {
                             style={{ background: tag.color }}
                           ></div>
                         </td>
-                        <td className="whitespace-nowrap px-6 py-4" ><button onClick={()=>handleDelete(tag.id)} className=" bg-indigo-500 text-white px-4 py-2 rounded-sm hover:bg-indigo-600 cursor-pointer">Archive</button></td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <button
+                            onClick={() => handleDelete(tag.id)}
+                            className=" bg-indigo-500 text-white px-4 py-2 rounded-sm hover:bg-indigo-600 cursor-pointer"
+                          >
+                            Archive
+                          </button>
+                        </td>
                       </tr>
                     ))
                   )}

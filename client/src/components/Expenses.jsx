@@ -282,10 +282,11 @@ const Expenses = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {!expenses ? (
+
+                  {expenses.length === 0 ? (
                     <tr>
                       <td colSpan="4" className="text-center py-4">
-                        No expenses available.
+                        No Expenses available.
                       </td>
                     </tr>
                   ) : (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { onStatusChange, onUsersFetch,onRoleChange } from "../api/usersApi";
+import { onStatusChange, onUsersFetch, onRoleChange } from "../api/usersApi";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -65,7 +65,13 @@ const Users = () => {
         </tr>
       </thead>
       <tbody>
-        {users &&
+        {users.length === 0 ? (
+          <tr>
+            <td colSpan="4" className="text-center py-4">
+              No Users available.
+            </td>
+          </tr>
+        ) : (
           users.map((user, idx) => (
             <tr className="border-b dark:border-neutral-500" key={idx}>
               <td className="whitespace-nowrap px-6 py-4 font-medium">
@@ -102,7 +108,8 @@ const Users = () => {
                 </select>
               </td>
             </tr>
-          ))}
+          ))
+        )}
       </tbody>
     </table>
   );

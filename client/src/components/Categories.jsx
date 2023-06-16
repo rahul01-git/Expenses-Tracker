@@ -155,7 +155,7 @@ const Categories = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {!categories ? (
+                  {categories.length === 0 ? (
                     <tr>
                       <td colSpan="4" className="text-center py-4">
                         No Categories available.
