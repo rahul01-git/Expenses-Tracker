@@ -5,6 +5,6 @@ import userSlice from './slices/userSlice'
 export const store = configureStore({
     reducer: {
         auth: authSlice,
-        user: userSlice
+        user: userSlice,
     }
 })

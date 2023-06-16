@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     user_id: DataTypes.INTEGER,
     note: DataTypes.STRING,
-    image: DataTypes.STRING,
     category_id: DataTypes.INTEGER,
     amount: {
       type: DataTypes.INTEGER,
@@ -37,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    expenses_data: {
+    expenses_date: {
       type: DataTypes.DATE,
       allowNull:false,
     },

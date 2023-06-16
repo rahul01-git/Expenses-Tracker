@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiWallet } from "react-icons/bi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 const Amount = () => {
-  const [balance, setBalance] = useState(100000000000000000);
+  const { user } = useSelector((state) => state.user);
+  const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
+
+  useEffect(()=>{
+    setIncome(user?.payload?.income)
+    setExpense(user?.payload?.expenses)
+    setBalance(user?.payload?.income + user?.payload?.expenses)
+  },[user?.payload?.income, user?.payload?.expenses])
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
       <div className="flex bg-indigo-300 items-center p-3 rounded-sm">

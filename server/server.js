@@ -19,6 +19,7 @@ app.use(cors({origin:CLIENT_URL,credentials: true}))
 app.use(passport.initialize())
 
 
+
 //auth routes
 app.use('/api',require('./routes/auth'))
 

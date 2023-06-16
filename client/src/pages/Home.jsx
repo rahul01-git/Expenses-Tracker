@@ -12,7 +12,6 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState(null);
 
   const logout = async () => {
     try {
@@ -44,7 +43,7 @@ const Home = () => {
       <h1>Loading....</h1>
     </div>
   ) : (
-    <div className="border-4 border-red-500 p-3 max-w-screen-lg mx-auto max-h-full">
+    <div className="border-4 border-indigo-500 p-3 max-h-full">
       <Header logout={logout} />
       <Amount />
       <OptionsMenu />

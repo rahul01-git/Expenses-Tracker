@@ -19,9 +19,6 @@ module.exports = {
       note: {
         type: Sequelize.STRING
       },
-      image: {
-        type: Sequelize.STRING
-      },
       category_id: {
         type: Sequelize.INTEGER
       },
@@ -33,7 +30,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-      expenses_data: {
+      expenses_date: {
         type: Sequelize.DATE,
         allowNull:false,
       },

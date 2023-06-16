@@ -57,7 +57,7 @@ const Tags = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-[1fr,1fr] gap-4">
+    <div className="grid grid-cols-[1fr,2fr] gap-4">
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="space-y-6 mt-5 border-r-4 border-indigo-600 p-3"

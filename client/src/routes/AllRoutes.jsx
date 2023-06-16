@@ -7,6 +7,7 @@ import PageNotFound from "../pages/PageNotFound";
 import Tags from '../components/Tags'
 import Categories from '../components/Categories'
 import Expenses from '../components/Expenses'
+import Users from "../components/Users";
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -27,6 +28,7 @@ const AllRoutes = () => {
             <Route path='tags' element={<Tags/>} />
             <Route path='category' element={<Categories />} />
             <Route path='expenses' element={<Expenses />} />
+            <Route path='users' element={<Users />} />
           </Route>
         </Route>
         <Route element={<RestrictedRoutes />}>

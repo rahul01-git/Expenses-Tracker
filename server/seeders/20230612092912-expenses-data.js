@@ -14,9 +14,10 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Expenses', [{
       title: 'lunch',
-      user_id: 1,
-      category_id: 1,
-      expenses_data: new Date('2023-06-12'),
+      user_id: 23,
+      category_id: 8,
+      amount:-1700,
+      expenses_date: new Date('2023-06-12'),
       createdAt: new Date('2023-06-12'),
       updatedAt: new Date('2023-06-12'),
     }], {});
