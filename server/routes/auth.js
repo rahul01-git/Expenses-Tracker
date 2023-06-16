@@ -5,7 +5,7 @@ const { register, login, protected, logout,tags,fetchTags,archiveTags,category,f
 const { validationMiddleware } = require('../middlewares/validations-middleware')
 const { userAuth } = require('../middlewares/auth-middleware')
 const { registerValidation, loginValidation } = require('../validators/auth')
-const { populateUser, populateAmount } = require('../middlewares/populate-middleware')
+const { populateUser } = require('../middlewares/populate-middleware')
 
 router.get('/protected', userAuth,populateUser ,protected)
 
