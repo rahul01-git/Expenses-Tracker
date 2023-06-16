@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 
-const { register, login, protected, logout,tags,fetchTags,archiveTags,category,fetchCategory ,deleteCategory,fetchExpenses, expenses,deleteExpenses, fetchDeletedExpenses, softDeleteExpenses, recoverExpenses, fetchUsers, changeStatus} = require('../controllers/auth')
+const { register, login, protected, logout,tags,fetchTags,archiveTags,category,fetchCategory ,deleteCategory,fetchExpenses, expenses,deleteExpenses, fetchDeletedExpenses, softDeleteExpenses, recoverExpenses, fetchUsers, changeStatus, changeRole} = require('../controllers/auth')
 const { validationMiddleware } = require('../middlewares/validations-middleware')
 const { userAuth } = require('../middlewares/auth-middleware')
 const { registerValidation, loginValidation } = require('../validators/auth')
@@ -26,6 +26,7 @@ router.delete('/expenses/:id',userAuth,deleteExpenses)
 
 router.get('/users',userAuth,fetchUsers)
 router.put('/users/status/:id',userAuth,changeStatus)
+router.put('/users/role/:id',userAuth,changeRole)
 
 router.post('/register', registerValidation, validationMiddleware, register)
 router.post('/login', loginValidation, validationMiddleware, login)

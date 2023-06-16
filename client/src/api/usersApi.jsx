@@ -7,3 +7,6 @@ export async function onUsersFetch() {
 export async function onStatusChange(value, id) {
   return await  await axios.put(`http://localhost:8000/api/users/status/${id}`, { value });
 }
+export async function onRoleChange(value, id) {
+  return await  await axios.put(`http://localhost:8000/api/users/role/${id}`, { value });
+}

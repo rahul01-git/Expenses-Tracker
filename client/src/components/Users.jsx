@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { onStatusChange, onUsersFetch } from "../api/usersApi";
+import { onStatusChange, onUsersFetch,onRoleChange } from "../api/usersApi";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -19,7 +19,17 @@ const Users = () => {
   };
 
   const handleRoleChange = async (e, id) => {
-    alert(e.target.value);
+    try {
+      const value = e.target.value;
+      await onRoleChange(value, id);
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user.id === id ? { ...user, role: value } : user
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

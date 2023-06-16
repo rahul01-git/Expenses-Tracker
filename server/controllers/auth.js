@@ -273,3 +273,16 @@ exports.changeStatus = async (req, res) => {
         })
     }
 }
+exports.changeRole = async (req, res) => {
+    const {value} = req.body
+    const id = req.params.id
+    console.log(value,id)
+    try {
+        const users = await User.update({role:value},{where:{id}});
+        return res.status(200).json({ success: true, users })
+    } catch (error) {
+        return res.status(500).json({
+            error: error.message
+        })
+    }
+}
